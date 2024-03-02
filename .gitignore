@@ -1,2 +1,5 @@
 # Ignore node_modules directory
 node_modules/
+config/dbconfig.js
+.DS_Store
+
