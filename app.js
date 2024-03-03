@@ -1,7 +1,10 @@
 // Importing required modules
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
+
+const passport = require("./config/passport");
 
 // Creating an Express application
 const app = express();
@@ -21,6 +24,17 @@ async function run() {
     process.exit(1); // Exit the process if there's an error
   }
 }
+
+// Configure express-session middleware
+app.use(session({
+  secret: 'goodmorningboatarde', // Replace with your actual secret key
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Initialize Passport and restore authentication state from session
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Run the mongodb function
 run().catch(console.error);
