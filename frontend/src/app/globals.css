@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@better-font {
+  font-family: 'Better';
+  src: url('/fonts/Better.otf') format('opentype');
+  /* Additional font properties as needed */
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -32,6 +38,9 @@ body {
   }
 }
 
+/* LoginForm.jsx */
+/* LoginForm.jsx */
+
 .select-input {
   appearance: none; /* Remove default arrow */
   /* Other styles */
@@ -41,4 +50,17 @@ body {
 .dateofbirth-input {
   /* Other styles */
   height: 2.5rem; /* Adjust the height value as needed */
+}
+
+/* Yeeter logo */
+.custom-yeeter-logo {
+  font-family: 'Better', sans-serif;
+  font-size: 4.5rem /* 60px */;
+  line-height: 1;
+}
+
+/* Yeeter Login Left Image */
+
+.custom-login-image {
+  max-width: 225px;
 }

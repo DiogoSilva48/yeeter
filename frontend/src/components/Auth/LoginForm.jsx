@@ -46,36 +46,43 @@ export default function LoginForm() {
   };
 
   return (
-    <div
-      className="flex min-h-screen justify-center items-center"
-      style={{
-        background: 'linear-gradient(to bottom, #222831, #2c3341)',
-        /* Optionally, you can add more CSS properties here */
-      }}
-    >
-      <div className=" bg-white rounded-xl flex min-h-full flex-1 justify-center max-w-[900px]">
-        <div
-          className="flex-1 bg-cover bg-center rounded-xl rounded-r-none"
-          style={{ backgroundImage: `url(/images/myguy.png)` }}
-        ></div>
+    <div className="flex min-h-screen justify-center items-center bg-gradient-to-r from-blue-300 to-blue-400">
+      <div className="bg-white drop-shadow-md rounded-xl flex min-h-full flex-1 justify-center max-w-[1000px]">
+        <div className="flex-1 rounded-l-xl bg-blue-300 opacity-80 p-8 flex flex-col justify-center items-center">
+          <img
+            draggable="false"
+            src="/images/people-yeeter.png"
+            alt="People"
+            className="custom-login-image mb-6 drop-shadow-xl"
+          />
+          <p className="flex text-lg justify-center text-gray-900 drop-shadow-xl font-semibold mb-3">
+            Welcome to Yeeter!
+          </p>
+          <p className="flex text-gray-800 text-base text-pretty text-center drop-shadow-xl">
+            Your personalized social hub where you effortlessly follow your
+            interests, join engaging conversations, and stay updated on what's
+            trending worldwide
+          </p>
+        </div>
 
-        <div className="flex-1 flex flex-col justify-center py-12 lg:px-8">
+        <div className="bg-blue-100 opacity-100 flex-1 flex flex-col justify-center py-20 lg:px-8 rounded-r-xl">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img
-              className="mx-auto h-20 w-auto"
-              src="/images/logo-yeeter.svg"
-            />
-            <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Sign in to your Yeeter account
-            </h2>
+            <div className="flex justify-center items-center">
+              <span className="text-black custom-yeeter-logo select-none">
+                Y
+              </span>
+            </div>
+            <p className="flex text-lg justify-center text-black drop-shadow-xl font-semibold mb-4">
+              Sign in to your account
+            </p>
           </div>
 
-          <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="px-4 mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="username"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-sm leading-6 text-gray-600 "
                 >
                   Username
                 </label>
@@ -88,7 +95,7 @@ export default function LoginForm() {
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                    className="px-2 block w-full bg-blue-50 opacity-60 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -97,7 +104,7 @@ export default function LoginForm() {
                 <div className="flex items-center justify-between">
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium leading-6 text-gray-900"
+                    className="block text-sm leading-6 text-gray-600"
                   >
                     Password
                   </label>
@@ -111,13 +118,13 @@ export default function LoginForm() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                    className="px-2 block w-full bg-blue-50 opacity-60 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
                   />
                 </div>
-                <div className="text-right text-sm mt-3">
+                <div className="text-right text-sm mt-2">
                   <a
                     href="#"
-                    className="font-semibold text-blue-500 hover:text-blue-400"
+                    className="text-blue-500 font-semibold hover:text-blue-400"
                   >
                     Forgot password?
                   </a>
@@ -127,14 +134,14 @@ export default function LoginForm() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-darkGreyCustom px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverDarkGreyCustom focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="flex w-full justify-center rounded-md bg-darkGreyCustom px-3 py-2 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverDarkGreyCustom focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Sign in
                 </button>
               </div>
             </form>
 
-            <p className="mt-10 text-center text-sm text-gray-500">
+            <p className="mt-5 text-center text-sm text-gray-500">
               Don't have an account?{' '}
               <a
                 href="#"
