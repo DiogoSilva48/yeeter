@@ -2,6 +2,8 @@
 'use client';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SignupModal from './SignupModal';
 
 export default function LoginForm() {
@@ -28,10 +30,11 @@ export default function LoginForm() {
         Router.push('/');
       } else {
         // Handle unsuccessful login (e.g., display error message)
-        console.error('Login failed');
+        throw new Error('Invalid username or password');
       }
     } catch (error) {
       console.error('Login error:', error);
+      toast.error('Invalid username or password');
     }
   };
 
@@ -91,11 +94,12 @@ export default function LoginForm() {
                     id="username"
                     name="username"
                     type="text"
+                    placeholder="Enter your username"
                     autoComplete="username"
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className="px-2 block w-full bg-blue-50 opacity-60 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                    className="px-2 block w-full bg-blue-50 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -114,14 +118,15 @@ export default function LoginForm() {
                     id="password"
                     name="password"
                     type="password"
+                    placeholder="Enter your password"
                     autoComplete="current-password"
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="px-2 block w-full bg-blue-50 opacity-60 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
+                    className="px-2 block w-full bg-blue-50 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
                   />
                 </div>
-                <div className="text-right text-sm mt-2">
+                <div className="text-right text-sm mt-2 ">
                   <a
                     href="#"
                     className="text-blue-500 font-semibold hover:text-blue-400"
@@ -151,12 +156,12 @@ export default function LoginForm() {
                 Sign up
               </a>
             </p>
-
-            {/* Render the signup modal if showSignupModal is true */}
-            {showSignupModal && <SignupModal onClose={handleCloseModal} />}
           </div>
         </div>
       </div>
+      <ToastContainer />
+      {/* Render the signup modal if showSignupModal is true */}
+      {showSignupModal && <SignupModal onClose={handleCloseModal} />}
     </div>
   );
 }

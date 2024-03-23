@@ -1,6 +1,24 @@
 import React from 'react';
 
 function HackedPage() {
+  const handleSignOut = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/auth/logout', {
+        method: 'GET',
+        credentials: 'same-origin', // Ensure credentials are included for session-based authentication
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to logout');
+      }
+
+      // Redirect the user to the login page or perform any other action after logout
+      window.location.href = '/signin'; // Redirect to the login page
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
   const rainbowStyle = {
     animation: 'rainbow 10s linear infinite',
   };
@@ -21,7 +39,10 @@ function HackedPage() {
         alt="Hacking GIF"
       />
       <div className="flex mt-10 justify-end">
-        <button className="flex w-full justify-center rounded-md bg-darkGreyCustom px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverDarkGreyCustom focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+        <button
+          onClick={handleSignOut}
+          className="flex w-full justify-center rounded-md bg-darkGreyCustom px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-hoverDarkGreyCustom focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
           Sign out
         </button>
       </div>
