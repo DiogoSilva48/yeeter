@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const middlewareRoutes = require('./routes/middlewareRoutes');
+const yeetRoutes = require('./routes/yeetRoutes');
 
 const passport = require('./config/passport');
 
@@ -76,6 +77,7 @@ app.use(
 // Routes
 app.use('/auth', authRoutes);
 app.use('/', middlewareRoutes);
+app.use('/yeet', yeetRoutes);
 
 // Starting the server
 const port = process.env.PORT || 4000; // Use the port provided by the environment or default to 3000

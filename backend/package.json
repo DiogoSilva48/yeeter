@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diogovasconcelos99/yeeter.git"
+    "url": "git+https://github.com/diogosilva48/yeeter.git"
   },
   "author": "Diogo Vasconcelos & Diogo Silva",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/diogovasconcelos99/yeeter/issues"
+    "url": "https://github.com/diogosilva48/yeeter/issues"
   },
-  "homepage": "https://github.com/diogovasconcelos99/yeeter#readme",
+  "homepage": "https://github.com/diogosilva48/yeeter#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
