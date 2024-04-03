@@ -37,6 +37,15 @@ Twitter but better
 - Account Settings:
   - Change user information
 
+## Screenshots
+
+Here are some screenshots of Yeeter:
+
+- Login Page:
+  ![Screenshot 1](/screenshots/screenshot1.png)
+- Register Modal:
+  ![Screenshot 2](/screenshots/screenshot2.png)
+
 ## How to use
 
 To get started with Yeeter, follow these steps:

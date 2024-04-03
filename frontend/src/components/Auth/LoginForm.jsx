@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SignupModal from './SignupModal';
+import InputField from './Form/InputField';
+import ForgotPassword from './Form/ForgotPassword';
+import loginTexts from '../../data/loginTexts.json';
 
 export default function LoginForm() {
   const [username, setUsername] = useState('');
@@ -49,9 +52,9 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex min-h-screen justify-center items-center bg-gradient-to-r from-blue-300 to-blue-400">
-      <div className="bg-white drop-shadow-md rounded-xl flex min-h-full flex-1 justify-center max-w-[1000px]">
-        <div className="flex-1 rounded-l-xl bg-blue-300 opacity-80 p-8 flex flex-col justify-center items-center">
+    <div className="flex min-h-screen justify-center items-center bg-gradient-to-r from-blue-300 to-blue-400 md:px-6">
+      <div className="bg-white drop-shadow-md rounded-xl flex justify-center min-h-screen md:min-h-full flex-1 md:max-w-[1000px]">
+        <div className="hidden md:flex-1 md:rounded-l-xl md:bg-blue-300 md:opacity-80 md:p-8 md:flex md:flex-col md:justify-center md:items-center">
           <img
             draggable="false"
             src="/images/people-yeeter.png"
@@ -59,12 +62,10 @@ export default function LoginForm() {
             className="custom-login-image mb-6 drop-shadow-xl"
           />
           <p className="flex text-lg justify-center text-gray-900 drop-shadow-xl font-semibold mb-3">
-            Welcome to Yeeter!
+            {loginTexts.welcomeMessage}
           </p>
           <p className="flex text-gray-800 text-base text-pretty text-center drop-shadow-xl">
-            Your personalized social hub where you effortlessly follow your
-            interests, join engaging conversations, and stay updated on what's
-            trending worldwide
+            {loginTexts.description}
           </p>
         </div>
 
@@ -82,60 +83,29 @@ export default function LoginForm() {
 
           <div className="px-4 mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <div>
-                <label
-                  htmlFor="username"
-                  className="block text-sm leading-6 text-gray-600 "
-                >
-                  Username
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="username"
-                    name="username"
-                    type="text"
-                    placeholder="Enter your username"
-                    autoComplete="username"
-                    required
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className="px-2 block w-full bg-blue-50 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center justify-between">
-                  <label
-                    htmlFor="password"
-                    className="block text-sm leading-6 text-gray-600"
-                  >
-                    Password
-                  </label>
-                </div>
-                <div className="mt-2">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    placeholder="Enter your password"
-                    autoComplete="current-password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="px-2 block w-full bg-blue-50 rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400 sm:text-sm sm:leading-6"
-                  />
-                </div>
-                <div className="text-right text-sm mt-2 ">
-                  <a
-                    href="#"
-                    className="text-blue-500 font-semibold hover:text-blue-400"
-                  >
-                    Forgot password?
-                  </a>
-                </div>
-              </div>
-
+              {/* Username Input */}
+              <InputField
+                id="username"
+                name="username"
+                type="text"
+                placeholderInside="Enter your username"
+                placeholderOutside="Username"
+                autoComplete="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              {/* Password Input */}
+              <InputField
+                id="password"
+                name="password"
+                type="password"
+                placeholderInside="Enter your password"
+                placeholderOutside="Password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <ForgotPassword />
               <div>
                 <button
                   type="submit"
@@ -148,13 +118,13 @@ export default function LoginForm() {
 
             <p className="mt-5 text-center text-sm text-gray-500">
               Don't have an account?{' '}
-              <a
+              <button
                 href="#"
                 className="font-semibold leading-6 text-blue-500 hover:text-blue-400"
                 onClick={handleSignupClick}
               >
                 Sign up
-              </a>
+              </button>
             </p>
           </div>
         </div>
