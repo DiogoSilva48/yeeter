@@ -63,11 +63,10 @@ exports.login = (req, res, next) => {
 exports.logout = (req, res) => {
   req.logout((err) => {
     if (err) {
-      // Handle any errors that occur during the logout process
       console.error('Error during logout:', err);
       return res.status(500).json({ message: 'Logout failed' });
     }
-    // If logout is successful, send a response indicating success
+    res.clearCookie('yeeterCookie');
     res.status(200).json({ message: 'Logout successful' });
   });
 };

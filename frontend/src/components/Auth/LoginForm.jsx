@@ -32,7 +32,7 @@ export default function LoginForm() {
         // Redirect to homepage or another page upon successful login
         Router.push('/');
       } else {
-        // Handle unsuccessful login (e.g., display error message)
+        // Handle unsuccessful login
         throw new Error('Invalid username or password');
       }
     } catch (error) {

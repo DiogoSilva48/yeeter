@@ -2,7 +2,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import HackedPage from '@/components/HackedPage';
+import TesteHomepage from '@/components/Home/TesteHomepage';
 
 function HomePage() {
   const router = useRouter();
@@ -37,7 +37,7 @@ function HomePage() {
 
   // Render HackedPage if authenticated
   if (isAuthenticated) {
-    return <HackedPage />;
+    return <TesteHomepage />;
   }
 
   // By default, render nothing

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const middlewareRoutes = require('./routes/middlewareRoutes');
 const yeetRoutes = require('./routes/yeetRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const passport = require('./config/passport');
 
@@ -33,15 +34,27 @@ async function run() {
 // Configure express-session middleware
 app.use(
   session({
-    secret: 'goodmorningboatarde', // Replace with your actual secret key
+    secret: 'goodmorningboatarde',
     resave: false,
     saveUninitialized: false,
+    name: 'yeeterCookie',
+    cookie: {
+      secure: false, // Set to true in production
+      httpOnly: false, // Prevent client-side JavaScript access
+      maxAge: 3600000, // Expire cookie after one hour
+      path: '/',
+      domain: 'localhost',
+    },
   })
 );
 
 // Initialize Passport and restore authentication state from session
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Middleware to parse the request body as JSON
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Run the mongodb function
 run().catch(console.error);
@@ -54,10 +67,6 @@ process.on('SIGINT', async () => {
   }
   process.exit(0); // Exit the process gracefully
 });
-
-// Middleware to parse the request body as JSON
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route for the homepage
 app.get('/', (req, res) => {
@@ -78,6 +87,7 @@ app.use(
 app.use('/auth', authRoutes);
 app.use('/', middlewareRoutes);
 app.use('/yeet', yeetRoutes);
+app.use('/user', userRoutes);
 
 // Starting the server
 const port = process.env.PORT || 4000; // Use the port provided by the environment or default to 3000
